@@ -1,0 +1,17 @@
+export const LOGIN_START = 'app/Auth/LOGIN_START';
+export const LOGIN_SUCCESS = 'app/Auth/LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'app/Auth/LOGIN_FAILURE';
+
+export const LOGOUT = 'app/Auth/LOGOUT';
+
+export const REGISTER_START = 'app/Auth/REGISTER_START';
+export const REGISTER_SUCCESS = 'app/Auth/REGISTER_SUCCESS';
+export const REGISTER_FAILURE = 'app/Auth/REGISTER_FAILURE';
+
+export const FORGOT_PASSWORD_START = 'app/Auth/FORGOT_PASSWORD_START';
+export const FORGOT_PASSWORD_SUCCESS = 'app/Auth/FORGOT_PASSWORD_SUCCESS';
+export const FORGOT_PASSWORD_FAILURE = 'app/Auth/FORGOT_PASSWORD_FAILURE';
+
+export const RESET_PASSWORD_START = 'app/Auth/RESET_PASSWORD_START';
+export const RESET_PASSWORD_SUCCESS = 'app/Auth/RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'app/Auth/RESET_PASSWORD_FAILURE';

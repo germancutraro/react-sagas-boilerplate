@@ -1,0 +1,4 @@
+{
+  "fixturesFolder": "__tests__/e2e/fixtures",
+  "integrationFolder": "__tests__/e2e/integration"
+}

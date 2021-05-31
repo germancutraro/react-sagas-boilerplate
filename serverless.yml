@@ -1,0 +1,62 @@
+service: React-Boilerplate
+
+app: reactboilerplate
+
+frameworkVersion: '2'
+
+custom:
+  bucketName: reactboilerplate.app
+  s3Sync:
+    - bucketName: ${self:custom.bucketName}
+      localDir: dist/
+      deleteRemoved: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - .git/**
+    - .serverless/**
+    - .vscode/**
+    - __tests__/**
+    - documentation/*
+    - yarn.lock
+    - README.md
+    - .eslintignore
+    - .eslintrc.js
+    - .prettierignore
+    - .prettierrc
+    - babel.config.json
+    - jest.config.js
+
+plugins:
+  - serverless-s3-sync
+
+resources:
+  Resources:
+    ReactAppBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+    S3AccessPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: ReactAppBucket
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: '*'
+              Action:
+                - S3:GetObject
+              Resource: arn:aws:s3:::${self:custom.bucketName}/*
